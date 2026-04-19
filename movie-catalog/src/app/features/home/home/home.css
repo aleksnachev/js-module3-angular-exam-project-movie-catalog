@@ -1,0 +1,146 @@
+/* HERO SECTION */
+
+.home-hero {
+  min-height: 85vh;
+
+  display: flex;
+  align-items: center;
+
+  background:
+    linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.95)), url('/images/cinema-bg.jpg');
+
+  background-size: cover;
+  background-position: center;
+}
+
+/* HERO CONTENT */
+
+.hero-content {
+  display: flex;
+  align-items: center;
+}
+
+/* TEXT */
+
+.hero-text {
+  max-width: 650px;
+}
+
+/* TITLE */
+
+.hero-text h1 {
+  font-size: 56px;
+
+  font-weight: 900;
+
+  line-height: 1.2;
+
+  margin-bottom: 20px;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+
+  -webkit-background-clip: text;
+
+  color: transparent;
+}
+
+/* DESCRIPTION */
+
+.hero-description {
+  font-size: 18px;
+
+  color: #cbd5f5;
+
+  margin-bottom: 30px;
+
+  line-height: 1.7;
+}
+
+/* BUTTONS */
+
+.hero-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-outline {
+  padding: 12px 24px;
+
+  border-radius: 10px;
+
+  border: 1px solid #6366f1;
+
+  color: white;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.btn-outline:hover {
+  background: #6366f1;
+
+  transform: translateY(-2px);
+}
+
+/* INFO SECTION */
+
+.home-info {
+  padding: 80px 0;
+}
+
+/* GRID */
+
+.info-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  gap: 30px;
+}
+
+/* CARDS */
+
+.info-card {
+  padding: 30px;
+
+  border-radius: 16px;
+
+  background: rgba(15, 23, 42, 0.6);
+
+  border: 1px solid #1e293b;
+
+  transition: 0.3s;
+}
+
+.info-card:hover {
+  transform: translateY(-6px);
+
+  border-color: #6366f1;
+}
+
+/* ICON */
+
+.info-icon {
+  font-size: 28px;
+
+  display: block;
+
+  margin-bottom: 15px;
+}
+
+/* TEXT */
+
+.info-card h3 {
+  font-size: 20px;
+
+  margin-bottom: 10px;
+}
+
+.info-card p {
+  color: #94a3b8;
+
+  font-size: 15px;
+}

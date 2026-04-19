@@ -1,0 +1,42 @@
+<header class="header">
+  <div class="header-top container">
+    <div class="logo-wrap">
+      <span class="logo-icon">🎬</span>
+      <span class="logo-text">MovieHub</span>
+    </div>
+
+    <div class="auth-nav">
+      <!-- @if (!isLoggedIn()) { -->
+
+      <a routerLink="/login" class="nav-btn"> Login </a>
+
+      <a routerLink="/register" class="nav-btn primary"> Register </a>
+
+      <!-- } -->
+
+      <!-- @else { -->
+
+      <a routerLink="/profile" class="nav-btn">
+        <!-- {{ username() }} -->
+      </a>
+
+      <a class="nav-btn logout" routerLink="/logout"> Logout </a>
+
+      <!-- } -->
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <div class="container nav-inner">
+      <a routerLink="/home" routerLinkActive="active"> Home </a>
+
+      <a routerLink="/movies" routerLinkActive="active"> Movies </a>
+
+      <!-- @if (isLoggedIn()) { -->
+
+      <a routerLink="/movies/create" class="create-btn"> + New Movie </a>
+
+      <!-- } -->
+    </div>
+  </nav>
+</header>

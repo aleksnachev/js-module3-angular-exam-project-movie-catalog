@@ -1,0 +1,52 @@
+<section class="home-hero">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h1>
+        Discover Your Next
+        <span class="highlight"> Favorite Movie </span>
+      </h1>
+
+      <p class="hero-description">
+        MovieHub is your place to explore movies, share your favorites, and build your own personal
+        movie collection. Browse the catalog, discover new titles, and contribute your own movie
+        entries.
+      </p>
+
+      <!-- @if (!isLoggedIn()) { -->
+        <div class="hero-actions">
+          <a routerLink="/login" class="btn btn-primary"> Login </a>
+
+          <a routerLink="/register" class="btn btn-outline"> Register </a>
+        </div>
+      <!-- } -->
+    </div>
+  </div>
+</section>
+
+<section class="home-info">
+  <div class="container info-grid">
+    <div class="info-card">
+      <span class="info-icon"> 🎬 </span>
+
+      <h3>Browse Movies</h3>
+
+      <p>Explore a growing catalog of movies shared by users from all around.</p>
+    </div>
+
+    <div class="info-card">
+      <span class="info-icon"> ✏️ </span>
+
+      <h3>Add Your Own</h3>
+
+      <p>Share your favorite movies and contribute to the community.</p>
+    </div>
+
+    <div class="info-card">
+      <span class="info-icon"> ⭐ </span>
+
+      <h3>Manage Collection</h3>
+
+      <p>Edit or delete movies that you have created anytime.</p>
+    </div>
+  </div>
+</section>

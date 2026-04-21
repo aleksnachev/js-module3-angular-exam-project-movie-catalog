@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreateMovieData, Movie } from '../../shared/interfaces/movie.js';
+import { CreateMovieData, EditMovieData, Movie } from '../../shared/interfaces/movie.js';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +20,14 @@ export class ApiService {
 
   createMovie(data: CreateMovieData): Observable<Movie> {
     return this.http.post<Movie>(`${this.apiUrl}/movies`, data, { withCredentials: true });
+  }
+
+  editMovie(movieId: string, data: EditMovieData): Observable<Movie> {
+    return this.http.put<Movie>(`${this.apiUrl}/movies/${movieId}`, data, { withCredentials: true });
+  }
+
+  deleteMovie(movieId: string): Observable<Movie> {
+    return this.http.delete<Movie>(`${this.apiUrl}/movies/${movieId}`, { withCredentials: true });
   }
 
   subscribeToMovie(movieId: string): Observable<Movie> {

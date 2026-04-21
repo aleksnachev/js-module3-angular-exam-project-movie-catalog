@@ -1,4 +1,5 @@
 .movies-page {
+
   padding: 40px 60px;
 
   max-width: 1400px;
@@ -7,21 +8,28 @@
 }
 
 .movies-header {
+
   margin-bottom: 30px;
 }
 
+/* FIX — по-тъмен текст */
+
 .movies-header h1 {
-  font-size: 34px;
 
-  font-weight: 700;
+  font-size: 36px;
 
-  color: #1f2937;
+  font-weight: 800;
 
-  margin-bottom: 6px;
+  color: white; /* почти черно */
+
+  margin-bottom: 8px;
 }
 
 .movies-header p {
-  color: #6b7280;
 
-  font-size: 16px;
+  color: white; /* по-тъмен gray */
+
+  font-size: 17px;
+
+  font-weight: 500;
 }

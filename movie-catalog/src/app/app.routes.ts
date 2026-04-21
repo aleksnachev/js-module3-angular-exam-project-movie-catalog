@@ -6,6 +6,9 @@ import { NotFound } from './features/not-found/not-found.js';
 import { Movies } from './features/movies/movies.js';
 import { MovieContent } from './features/movies/movie-content/movie-content.js';
 import { NewMovie } from './features/movies/new-movie/new-movie.js';
+import { EditMovie } from './features/movies/edit-movie/edit-movie.js';
+import { Profile } from './features/profile/profile.js';
+import { authGuard } from './core/guards/auth.guard.js';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,9 +19,10 @@ export const routes: Routes = [
 
   { path: 'movies', component: Movies },
   { path: 'movies/:movieId', component: MovieContent },
-  { path: 'add-movie', component: NewMovie },
+  { path: 'add-movie', component: NewMovie, canActivate: [authGuard] },
+  { path: 'movies/edit/:movieId', component: EditMovie, canActivate: [authGuard] },
 
-
+  { path: 'profile', component: Profile, canActivate: [authGuard] },
 
 
   { path: '**', component: NotFound },

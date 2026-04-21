@@ -144,3 +144,18 @@
 
   font-size: 15px;
 }
+.clickable {
+
+  text-decoration: none;
+
+  color: inherit;
+
+  cursor: pointer;
+}
+
+.clickable:hover {
+
+  transform: translateY(-6px);
+
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}

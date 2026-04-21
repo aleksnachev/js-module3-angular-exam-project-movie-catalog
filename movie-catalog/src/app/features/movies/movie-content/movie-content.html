@@ -34,7 +34,9 @@
           <div class="actions">
             <a [routerLink]="['/movies/edit', movie()!._id]" class="secondary-btn"> Edit </a>
 
-            <button class="danger-btn">Delete</button>
+            <button (click)="onDelete()" class="danger-btn" [disabled]="isDeleting">
+              {{ isDeleting ? 'Deleting...' : 'Delete' }}
+            </button>
           </div>
         }
       </div>

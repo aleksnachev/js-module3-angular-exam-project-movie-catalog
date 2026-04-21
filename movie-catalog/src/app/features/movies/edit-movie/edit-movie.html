@@ -1,0 +1,107 @@
+<div class="form-wrapper">
+  <!-- @if (isLoadingData) {
+    <p>Loading movie...</p>
+  }  -->
+  <!-- @else { -->
+    <form [formGroup]="movieForm" (ngSubmit)="onSubmit()" class="movie-form">
+      <h2>Edit Movie 🎬</h2>
+
+      <div class="form-group">
+        <input
+          type="text"
+          formControlName="title"
+          placeholder="Movie title"
+        />
+        @if (title?.touched && title?.invalid) {
+          <div class="error-message">
+            @if (title?.errors?.['required']) {
+              <p>Title is required</p>
+            }
+            @if (title?.errors?.['minLength']) {
+              <p>Title must be at least 2 characters</p>
+            }
+            @if (title?.errors?.['maxLength']) {
+              <p>Title cannot exceed 100 characters</p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <input
+          type="text"
+          formControlName="imageUrl"
+          placeholder="Image URL"
+        />
+        @if (imageUrl?.touched && imageUrl?.invalid) {
+          <div class="error-message">
+            @if (imageUrl?.errors?.['required']) {
+              <p>Image URL is required</p>
+            }
+            @if (imageUrl?.errors?.['invalidUrl']) {
+              <p>Please enter a valid URL</p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <input
+          type="text"
+          formControlName="genre"
+          placeholder="Genre"
+        />
+        @if (genre?.touched && genre?.invalid) {
+          <div class="error-message">
+            @if (genre?.errors?.['required']) {
+              <p>Genre is required</p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <input
+          type="number"
+          formControlName="year"
+          placeholder="Year"
+        />
+        @if (year?.touched && year?.invalid) {
+          <div class="error-message">
+            @if (year?.errors?.['required']) {
+              <p>Year is required</p>
+            }
+            @if (year?.errors?.['invalidYear']) {
+              <p>Please enter a valid year (1800 - current year)</p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <textarea
+          formControlName="description"
+          placeholder="Description"
+          rows="6"
+        ></textarea>
+        @if (description?.touched && description?.invalid) {
+          <div class="error-message">
+            @if (description?.errors?.['required']) {
+              <p>Description is required</p>
+            }
+            @if (description?.errors?.['minLength']) {
+              <p>Description must be at least 10 characters</p>
+            }
+            @if (description?.errors?.['maxLength']) {
+              <p>Description cannot exceed 1000 characters</p>
+            }
+          </div>
+        }
+      </div>
+
+      <button type="submit" class="primary-btn" [disabled]="movieForm.invalid || isLoading">
+        {{ isLoading ? 'Updating...' : 'Update Movie' }}
+      </button>
+    </form>
+  <!-- } -->
+</div>

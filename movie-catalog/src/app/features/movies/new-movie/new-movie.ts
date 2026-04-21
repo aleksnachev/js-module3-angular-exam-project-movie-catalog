@@ -43,11 +43,12 @@ export class NewMovie {
     this.apiService.createMovie(movieData).subscribe({
       next: (movie) => {
         this.isLoading = false;
-        this.notifService.showSuccess('Movie created');
+        this.notifService.showSuccess('Film created');
         this.router.navigate(['/movies', movie._id]);
       },
       error: () => {
         this.isLoading = false;
+        this.notifService.showError('Failed to create film');
       },
     });
   }

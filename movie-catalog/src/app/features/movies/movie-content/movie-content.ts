@@ -58,12 +58,12 @@ export class MovieContent implements OnInit {
     this.apiService.deleteMovie(this.movieId).subscribe({
       next: () => {
         this.isDeleting = false;
-        this.notifService.showSuccess('Movie deleted');
+        this.notifService.showSuccess('Film deleted');
         this.router.navigate(['/movies']);
       },
       error: () => {
         this.isDeleting = false;
-        this.notifService.showError('Failed to delete movie');
+        this.notifService.showError('Failed to delete film');
       },
     });
   }
@@ -80,21 +80,33 @@ export class MovieContent implements OnInit {
     if (this.isLiked()) {
       this.apiService.unlikeMovie(this.movieId).subscribe({
         next: (updatedMovie) => {
-          this.movie.set(updatedMovie);
+          const currentMovie = this.movie();
+          if (currentMovie) {
+            Object.assign(currentMovie, updatedMovie);
+            this.movie.set({ ...currentMovie });
+          }
           this.isLiking = false;
+          this.notifService.showSuccess('Film unliked');
         },
         error: () => {
           this.isLiking = false;
+          this.notifService.showError('Failed to unlike film');
         },
       });
     } else {
       this.apiService.likeMovie(this.movieId).subscribe({
         next: (updatedMovie) => {
-          this.movie.set(updatedMovie);
+          const currentMovie = this.movie();
+          if (currentMovie) {
+            Object.assign(currentMovie, updatedMovie);
+            this.movie.set({ ...currentMovie });
+          }
           this.isLiking = false;
+          this.notifService.showSuccess('Film liked');
         },
         error: () => {
           this.isLiking = false;
+          this.notifService.showError('Failed to like film');
         },
       });
     }

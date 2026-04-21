@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { InputError } from '../../../shared/directives/input-error.directive.js';
@@ -13,7 +13,7 @@ import { emailValidator } from '../../../shared/validators/email.validator.js';
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-export class Login {
+export class Login implements OnInit {
   private router = inject(Router);
   private authService = inject(AuthService);
   private notifService = inject(NotificationService);
@@ -25,6 +25,13 @@ export class Login {
   });
 
   isLoading = false;
+  hasError = false;
+
+  ngOnInit(): void {
+    this.loginForm.valueChanges.subscribe(() => {
+      this.hasError = false;
+    });
+  }
 
   onLogin(): void {
     if (this.loginForm.invalid) {
@@ -33,6 +40,7 @@ export class Login {
     }
 
     this.isLoading = true;
+    this.hasError = false;
 
     const { email, password } = this.loginForm.value;
 
@@ -45,6 +53,8 @@ export class Login {
       },
       error: (err) => {
         this.isLoading = false;
+        this.hasError = true;
+        this.notifService.showError(err.error?.message || 'Login failed. Please try again.');
       },
     });
   }

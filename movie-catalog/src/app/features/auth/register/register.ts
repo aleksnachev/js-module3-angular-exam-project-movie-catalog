@@ -63,6 +63,7 @@ export class Register {
       },
       error: (err) => {
         this.isLoading = false;
+        this.notifService.showError(err.error?.message || 'Registration failed. Please try again.');
       },
     });
   }

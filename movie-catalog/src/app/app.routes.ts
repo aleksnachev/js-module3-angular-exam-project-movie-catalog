@@ -9,6 +9,7 @@ import { NewMovie } from './features/movies/new-movie/new-movie.js';
 import { EditMovie } from './features/movies/edit-movie/edit-movie.js';
 import { Profile } from './features/profile/profile.js';
 import { authGuard } from './core/guards/auth.guard.js';
+import { publicGuard } from './core/guards/public.guard.js';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,10 +18,12 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () => import('./features/auth/login/login.js').then((c) => c.Login),
+    canActivate: [publicGuard],
   },
   {
     path: 'register',
     loadComponent: () => import('./features/auth/register/register.js').then((c) => c.Register),
+    canActivate: [publicGuard],
   },
 
   {
@@ -57,8 +60,7 @@ export const routes: Routes = [
   // { path: 'profile', component: Profile, canActivate: [authGuard] },
 
   // { path: '**', component: NotFound },
-  {
-    path: '**',
+    {path: '**',
     loadComponent: () => import('./features/not-found/not-found.js').then((c) => c.NotFound),
   },
 ];

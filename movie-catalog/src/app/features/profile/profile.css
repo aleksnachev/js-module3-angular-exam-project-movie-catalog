@@ -3,7 +3,11 @@
 
   justify-content: center;
 
+  flex-direction: column;
+
   padding: 40px 20px;
+
+  gap: 40px;
 }
 
 .profile {
@@ -20,6 +24,8 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
 
   text-align: center;
+
+  margin: 0 auto;
 }
 
 .profile img {
@@ -182,4 +188,72 @@ select {
   font-size: 16px;
 
   color: #6b7280;
+}
+
+/* Liked Movies Section */
+
+.liked-movies-section {
+  width: 100%;
+
+  padding: 0 20px;
+}
+
+.liked-movies-section h3 {
+  font-size: 24px;
+
+  font-weight: 700;
+
+  color: white;
+
+  margin-bottom: 24px;
+
+  text-align: center;
+}
+
+.liked-movies-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+
+  gap: 20px;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+}
+
+.empty-message {
+  text-align: center;
+
+  color: #6b7280;
+
+  font-size: 16px;
+
+  padding: 40px;
+
+  background: #f9fafb;
+
+  border-radius: 12px;
+
+  max-width: 600px;
+
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+
+    padding: 20px;
+  }
+
+  .profile {
+    max-width: 100%;
+  }
+
+  .liked-movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+
+    gap: 16px;
+  }
 }

@@ -84,11 +84,12 @@ export class EditMovie implements OnInit {
     this.apiService.editMovie(this.movieId, movieData).subscribe({
       next: (movie) => {
         this.isLoading = false;
-        this.notifService.showSuccess('Movie updated');
+        this.notifService.showSuccess('Film updated');
         this.router.navigate(['/movies', movie._id]);
       },
       error: () => {
         this.isLoading = false;
+        this.notifService.showError('Failed to update film');
       },
     });
   }

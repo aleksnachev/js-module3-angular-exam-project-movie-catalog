@@ -42,7 +42,7 @@
         <p class="error form-error">You can't continue until you provide valid data</p>
       }
 
-      <button type="submit" class="primary-btn" [disabled]="loginForm.invalid || isLoading">
+      <button type="submit" class="primary-btn" [disabled]="loginForm.invalid || isLoading || hasError">
         {{ isLoading ? 'Logging in...' : 'Login' }}
       </button>
 

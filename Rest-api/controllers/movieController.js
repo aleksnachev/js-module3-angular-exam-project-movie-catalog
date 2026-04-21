@@ -42,6 +42,7 @@ function editMovie(req, res, next) {
         { title, imageUrl, genre, year, description },
         { new: true }
     )
+        .populate('ownerId')
         .then(updatedMovie => {
             if (updatedMovie) {
                 res.status(200).json(updatedMovie);
@@ -79,6 +80,7 @@ function likeMovie(req, res, next) {
         { $addToSet: { likes: userId } },
         { new: true }
     )
+        .populate('ownerId')
         .then(movie => res.status(200).json(movie))
         .catch(next);
 }
@@ -92,6 +94,7 @@ function unlikeMovie(req, res, next) {
         { $pull: { likes: userId } },
         { new: true }
     )
+        .populate('ownerId')
         .then(movie => res.status(200).json(movie))
         .catch(next);
 }

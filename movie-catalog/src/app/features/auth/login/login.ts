@@ -41,7 +41,7 @@ export class Login {
         this.authService.setSession(user);
         this.isLoading = false;
         this.notifService.showSuccess('Login successful');
-        this.router.navigate(['/themes']);
+        this.router.navigate(['/movies']);
       },
       error: (err) => {
         this.isLoading = false;

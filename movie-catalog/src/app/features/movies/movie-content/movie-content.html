@@ -1,0 +1,45 @@
+<div class="details-wrapper">
+  @if (movie()) {
+    <div class="details-card">
+      <div class="details-image">
+        <img [src]="movie()!.imageUrl" [alt]="movie()!.title" />
+      </div>
+
+      <div class="details-info">
+        <h1>
+          {{ movie()!.title }}
+        </h1>
+
+        <div class="meta">
+          <span> 🎬 {{ movie()!.genre }} </span>
+
+          <span> 📅 {{ movie()!.year }} </span>
+
+          <span> ❤️ {{ movie()!.likes?.length || 0 }} </span>
+        </div>
+
+        <p class="description">
+          {{ movie()!.description }}
+        </p>
+
+        <div class="owner">
+          Added by:
+
+          <span>
+            {{ movie()!.ownerId.username }}
+          </span>
+        </div>
+
+        @if (isOwner()) {
+          <div class="actions">
+            <a [routerLink]="['/movies/edit', movie()!._id]" class="secondary-btn"> Edit </a>
+
+            <button class="danger-btn">Delete</button>
+          </div>
+        }
+      </div>
+    </div>
+  } @else {
+    <p>Loading...</p>
+  }
+</div>

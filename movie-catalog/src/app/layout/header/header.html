@@ -6,23 +6,23 @@
     </div>
 
     <div class="auth-nav">
-      <!-- @if (!isLoggedIn()) { -->
+      @if (!isLoggedIn()) {
 
       <a routerLink="/login" class="nav-btn"> Login </a>
 
       <a routerLink="/register" class="nav-btn primary"> Register </a>
 
-      <!-- } -->
+      }
 
-      <!-- @else { -->
+      @else {
 
       <a routerLink="/profile" class="nav-btn">
-        <!-- {{ username() }} -->
+        {{ username() }}
       </a>
 
-      <a class="nav-btn logout" routerLink="/logout"> Logout </a>
+      <a class="nav-btn logout" (click)="onLogout()"> Logout </a>
 
-      <!-- } -->
+      }
     </div>
   </div>
 
@@ -32,11 +32,11 @@
 
       <a routerLink="/movies" routerLinkActive="active"> Movies </a>
 
-      <!-- @if (isLoggedIn()) { -->
+      @if (isLoggedIn()) {
 
-      <a routerLink="/movies/create" class="create-btn"> + New Movie </a>
+      <a routerLink="/add-movie" class="create-btn"> + New Movie </a>
 
-      <!-- } -->
+      }
     </div>
   </nav>
 </header>

@@ -1,0 +1,25 @@
+<div class="movie-card">
+  <a [routerLink]="['/movies', movie._id]">
+    <div class="image-wrap">
+      <img [src]="movie.imageUrl" [alt]="movie.title" />
+    </div>
+
+    <div class="movie-info">
+      <h3>
+        {{ movie.title }}
+      </h3>
+
+      <p class="genre">
+        {{ movie.genre }}
+      </p>
+
+      <div class="meta">
+        <span>
+          {{ movie.year }}
+        </span>
+
+        <span> ❤️ {{ movie.likes?.length || 0 }} </span>
+      </div>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,27 @@
+.movies-page {
+  padding: 40px 60px;
+
+  max-width: 1400px;
+
+  margin: 0 auto;
+}
+
+.movies-header {
+  margin-bottom: 30px;
+}
+
+.movies-header h1 {
+  font-size: 34px;
+
+  font-weight: 700;
+
+  color: #1f2937;
+
+  margin-bottom: 6px;
+}
+
+.movies-header p {
+  color: #6b7280;
+
+  font-size: 16px;
+}

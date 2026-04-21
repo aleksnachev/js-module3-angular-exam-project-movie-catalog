@@ -1,0 +1,25 @@
+<div class="form-wrapper">
+  <form #movieForm="ngForm" (ngSubmit)="onSubmit()" class="movie-form">
+    <h2>Add New Movie 🎬</h2>
+
+    <input type="text" name="title" placeholder="Movie title" [(ngModel)]="title" required />
+
+    <input type="text" name="imageUrl" placeholder="Image URL" [(ngModel)]="imageUrl" required />
+
+    <input type="text" name="genre" placeholder="Genre" [(ngModel)]="genre" required />
+
+    <input type="number" name="year" placeholder="Year" [(ngModel)]="year" required />
+
+    <textarea
+      name="description"
+      placeholder="Description"
+      rows="6"
+      [(ngModel)]="description"
+      required
+    ></textarea>
+
+    <button type="submit" class="primary-btn" [disabled]="movieForm.invalid || isLoading">
+      {{ isLoading ? 'Creating...' : 'Create Movie' }}
+    </button>
+  </form>
+</div>

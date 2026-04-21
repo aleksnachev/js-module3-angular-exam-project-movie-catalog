@@ -1,0 +1,9 @@
+<main class="movies-grid">
+  @if (movies().length > 0) {
+    @for (movie of movies(); track movie._id) {
+      <app-movie-item [movie]="movie" />
+    }
+  } @else {
+    <p class="empty">No movies yet 🎬</p>
+  }
+</main>

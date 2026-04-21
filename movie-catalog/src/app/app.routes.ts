@@ -2,6 +2,10 @@ import { Routes } from '@angular/router';
 import { Home } from './features/home/home/home.js';
 import { Login } from './features/auth/login/login.js';
 import { Register } from './features/auth/register/register.js';
+import { NotFound } from './features/not-found/not-found.js';
+import { Movies } from './features/movies/movies.js';
+import { MovieContent } from './features/movies/movie-content/movie-content.js';
+import { NewMovie } from './features/movies/new-movie/new-movie.js';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -9,4 +13,13 @@ export const routes: Routes = [
 
   { path: 'login', component: Login },
   { path: 'register', component: Register },
+
+  { path: 'movies', component: Movies },
+  { path: 'movies/:movieId', component: MovieContent },
+  { path: 'add-movie', component: NewMovie },
+
+
+
+
+  { path: '**', component: NotFound },
 ];

@@ -4,10 +4,11 @@ import { Movie } from '../../interfaces/movie.js';
 import { AuthService } from '../../../core/services/auth.service.js';
 import { ApiService } from '../../../core/services/api.service.js';
 import { NotificationService } from '../../../core/services/notification.service.js';
+import { TitleSlicePipe } from '../../pipes/title-slice.pipe.js';
 
 @Component({
   selector: 'app-movie-item',
-  imports: [RouterLink],
+  imports: [RouterLink, TitleSlicePipe],
   templateUrl: './movie-item.html',
   styleUrl: './movie-item.css',
 })

@@ -6,16 +6,25 @@
       </div>
 
       <div class="details-info">
-        <h1>
-          {{ movie()!.title }}
-        </h1>
+        <div class="header-with-like">
+          <h1>
+            {{ movie()!.title }}
+          </h1>
+          <button
+            class="like-btn-detail"
+            [class.liked]="isLiked()"
+            (click)="onLikeClick()"
+            [disabled]="isLiking"
+            [title]="isLiked() ? 'Unlike' : 'Like'"
+          >
+            {{ isLiked() ? '❤️ ' : '🤍 ' }} {{ movie()!.likes?.length || 0 }}
+          </button>
+        </div>
 
         <div class="meta">
           <span> 🎬 {{ movie()!.genre }} </span>
 
           <span> 📅 {{ movie()!.year }} </span>
-
-          <span> ❤️ {{ movie()!.likes?.length || 0 }} </span>
         </div>
 
         <p class="description">
@@ -32,7 +41,7 @@
 
         @if (isOwner()) {
           <div class="actions">
-            <a [routerLink]="['/movies/edit', movie()!._id]" class="secondary-btn"> Edit </a>
+            <a [routerLink]="['/movies/edit', movie()!._id]" class="edit-btn"> Edit </a>
 
             <button (click)="onDelete()" class="danger-btn" [disabled]="isDeleting">
               {{ isDeleting ? 'Deleting...' : 'Delete' }}

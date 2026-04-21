@@ -22,11 +22,18 @@ export class MovieContent implements OnInit {
 
   movieId = '';
   isDeleting = false;
+  isLiking = false;
 
   isOwner = computed(() => {
     const user = this.authService.currentUser();
 
     return user && this.movie() && user._id === this.movie()!.ownerId._id;
+  });
+
+  isLiked = computed(() => {
+    const user = this.authService.currentUser();
+    if (!user || !this.movie()) return false;
+    return (this.movie()!.likes || []).includes(user._id);
   });
 
   ngOnInit(): void {
@@ -59,6 +66,38 @@ export class MovieContent implements OnInit {
         this.notifService.showError('Failed to delete movie');
       },
     });
+  }
+
+  onLikeClick(): void {
+    const user = this.authService.currentUser();
+    if (!user) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    this.isLiking = true;
+
+    if (this.isLiked()) {
+      this.apiService.unlikeMovie(this.movieId).subscribe({
+        next: (updatedMovie) => {
+          this.movie.set(updatedMovie);
+          this.isLiking = false;
+        },
+        error: () => {
+          this.isLiking = false;
+        },
+      });
+    } else {
+      this.apiService.likeMovie(this.movieId).subscribe({
+        next: (updatedMovie) => {
+          this.movie.set(updatedMovie);
+          this.isLiking = false;
+        },
+        error: () => {
+          this.isLiking = false;
+        },
+      });
+    }
   }
 }
 

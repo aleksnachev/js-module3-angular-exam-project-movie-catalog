@@ -22,4 +22,14 @@
       </div>
     </div>
   </a>
+
+  <button
+    class="like-btn"
+    [class.liked]="isLiked()"
+    (click)="onLikeClick($event)"
+    [disabled]="isLiking"
+    [title]="isLiked() ? 'Unlike' : 'Like'"
+  >
+    {{ isLiked() ? '❤️' : '🤍' }}
+  </button>
 </div>

@@ -30,6 +30,14 @@ export class ApiService {
     return this.http.delete<Movie>(`${this.apiUrl}/movies/${movieId}`, { withCredentials: true });
   }
 
+  likeMovie(movieId: string): Observable<Movie> {
+    return this.http.post<Movie>(`${this.apiUrl}/movies/${movieId}/like`, {}, { withCredentials: true });
+  }
+
+  unlikeMovie(movieId: string): Observable<Movie> {
+    return this.http.delete<Movie>(`${this.apiUrl}/movies/${movieId}/like`, { withCredentials: true });
+  }
+
   subscribeToMovie(movieId: string): Observable<Movie> {
     return this.http.put<Movie>(`${this.apiUrl}/movies/${movieId}`, {}, { withCredentials: true });
   }

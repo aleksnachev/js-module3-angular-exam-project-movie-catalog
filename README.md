@@ -16,6 +16,9 @@ User:
 - Edit own movies
 - Delete own movies
 - View profile
+- Edit profile
+- Like movies
+- See your favourite movies
 
 ## Core Features
 

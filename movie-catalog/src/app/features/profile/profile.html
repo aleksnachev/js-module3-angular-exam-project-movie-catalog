@@ -128,6 +128,22 @@
         </form>
       }
     </div>
+
+    <!-- LIKED MOVIES SECTION -->
+
+    <div class="liked-movies-section">
+      <h3>Your Liked Movies ❤️</h3>
+
+      @if (likedMovies().length > 0) {
+        <div class="liked-movies-grid">
+          @for (movie of likedMovies(); track movie._id) {
+            <app-movie-item [movie]="movie" />
+          }
+        </div>
+      } @else {
+        <p class="empty-message">You haven't liked any movies yet.</p>
+      }
+    </div>
   } @else {
     <!-- LOADING -->
 

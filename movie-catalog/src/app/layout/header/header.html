@@ -7,21 +7,16 @@
 
     <div class="auth-nav">
       @if (!isLoggedIn()) {
+        <a routerLink="/login" class="nav-btn"> Login </a>
 
-      <a routerLink="/login" class="nav-btn"> Login </a>
+        <a routerLink="/register" class="nav-btn primary"> Register </a>
 
-      <a routerLink="/register" class="nav-btn primary"> Register </a>
+      } @else {
+        <a routerLink="/profile" class="nav-btn">
+          {{ username() }}
+        </a>
 
-      }
-
-      @else {
-
-      <a routerLink="/profile" class="nav-btn">
-        {{ username() }}
-      </a>
-
-      <a class="nav-btn logout" (click)="onLogout()"> Logout </a>
-
+        <a class="nav-btn logout" (click)="onLogout()"> Logout </a>
       }
     </div>
   </div>
@@ -33,10 +28,18 @@
       <a routerLink="/movies" routerLinkActive="active"> Movies </a>
 
       @if (isLoggedIn()) {
-
-      <a routerLink="/add-movie" class="create-btn"> + New Movie </a>
-
+        <a routerLink="/add-movie" class="create-btn"> + New Movie </a>
       }
     </div>
   </nav>
+
+  @if (notification()) {
+    <p
+      class="notification"
+      [class.error-message]="notification()?.type === 'error'"
+      [class.success-message]="notification()?.type === 'success'"
+    >
+      {{ notification()?.message }}
+    </p>
+  }
 </header>

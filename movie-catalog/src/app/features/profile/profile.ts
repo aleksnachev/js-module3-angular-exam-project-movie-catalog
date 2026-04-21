@@ -4,10 +4,13 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { InputError } from '../../shared/directives/input-error.directive.js';
 import { EmailValidator } from '../../shared/directives/email-validator.directive.js';
 import { NotificationService } from '../../core/services/notification.service.js';
+import { ApiService } from '../../core/services/api.service.js';
+import { Movie } from '../../shared/interfaces/movie.js';
+import { MovieItem } from '../../shared/components/movie-item/movie-item.js';
 
 @Component({
   selector: 'app-profile',
-  imports: [FormsModule, InputError, EmailValidator],
+  imports: [FormsModule, InputError, EmailValidator, MovieItem],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
@@ -16,10 +19,13 @@ export class Profile implements OnInit{
 
   private authService = inject(AuthService)
   private notifService = inject(NotificationService);
+  private apiService = inject(ApiService);
+
   user = this.authService.currentUser
 
   isEditMode = signal(false)
   isLoading = signal(false)
+  likedMovies = signal<Movie[]>([])
 
   editUsername = ''
   editEmail = ''
@@ -28,10 +34,28 @@ export class Profile implements OnInit{
   ngOnInit(): void {
     if(!this.user){
       this.authService.getProfile().subscribe({
-        next: (user) => this.authService.setSession(user),
+        next: (user) => {
+          this.authService.setSession(user)
+          this.loadLikedMovies()
+        },
         error: () => {}
       })
+    } else {
+      this.loadLikedMovies()
     }
+  }
+
+  loadLikedMovies(): void {
+    const currentUser = this.user()
+    if(!currentUser) return
+
+    this.apiService.getMovies().subscribe({
+      next: (movies) => {
+        const liked = movies.filter(movie => (movie.likes || []).includes(currentUser._id))
+        this.likedMovies.set(liked)
+      },
+      error: () => {}
+    })
   }
 
   toggleEditMode():void{
